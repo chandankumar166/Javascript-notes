@@ -1,0 +1,463 @@
+
+---JavaScript is a programming language used for making websites more interactive and dynamic---
+
+Global Execution Context:
+
+    --> Before the execution of a Javascript program, browser creates a GEC.
+    --> It consists of two phases.(Memory Creation, Code Execution).
+    --> The Memory Creation phase of GEC is known as hoisting.
+
+Function Scope && Block Scope:
+
+    --> The variables that are declared in global can be accessed from anywhere.
+    --> The variables that are declared in the block will be accessed only inside the block.
+    --> var is functioned scoped. let, const are block scoped.
+
+Temporal DeadZone:
+
+    --> In the Memory Creation phase, let and const variables will be stored in script memory.
+    --> So if we try to access before assigning the values to these let and const variables they will throw Reference Error.
+
+    console.log(a); // Temporal DeadZone
+    let a = 10;
+
+    o/p: Reference Error: cannot access value of 'a' before initialization.
+
+Data Types: 
+
+    Data types can be divided into two:
+
+    1.Primitive data types
+    2.Non-primitive data types(Object References)
+
+    Primitive data types in JavaScript include:
+
+        1.Number 
+        2.String 
+        3.Boolean 
+        4.Null
+        5.Undefined
+
+    Non-primitive data types in JavaScript includes:
+
+        1.Objects
+        2.Arrays
+
+Strings Methods:
+
+    name = 'chandan kumar';
+
+    1.name.length;                  //13
+    2.name[0];                      //c
+    3.name.toUpperCase();           //CHANDAN KUMAR
+    4.name.substr(1,3);             //han
+    5.name.substring(1,4);          //han
+    6.name.split(' ');              //['chandan', 'kumar']
+    7.name.includes('ar');          //true
+    8.name.replace('a','b');       //chbndan kumar
+    9.name.replaceAll('a','b');    //chbndbn kumbr
+    10.name.charAt(0);              //c
+    11.name.indexOf('kumar');       //7
+    12.name.lastIndexOf('a');       //11
+
+    --> Each method will return the data.
+    --> Original string will not be modified since strings are immutable in javascript.
+
+Arrays:
+
+    --> Collection of data of same or different data types.
+    --> Arrays are non-primitive type.
+    --> When assigning a variable to existing array, it points to the original array. 
+    --> If any modifications are done to the new variable those will impact the original array.
+
+    arr = [1, 'hostel', true]
+
+    Array Methods: 
+    
+        1.Array.isArray(arr);
+        2.arr.length;
+        3.arr.toString();
+        4.arr.join();
+        5.arr.slice(startIndex, lastIndex);
+        6.arr.splice(startIndex, numberOfElementsToRemove); --> It modifies the original array.
+        7.arr.push(item);
+        8.arr.pop();
+        9.arr.shift();
+        10.arr.unshift(itemToAddAtBeginning);
+        11.arr.reverse(); --> It modifies the original array.
+        12.arr.sort(); --> It modifies the original array.
+
+Functions:
+
+    --> A piece of code that can be reused multiple times by declaring once.
+    --> Functions can take parameters or arguments and can return the result.
+
+    1.Declaration function:
+
+        function add(a, b) {
+            return a + b;
+        }
+
+    2.Expression function:
+
+        const add = function(a, b) {
+            return a+b;
+        }
+
+    3.Arrow function:
+
+        const add = (a, b) => a + b;
+
+    4.Self invoking function (Immediately Invoked Function Expression):
+
+        (function add(a, b) {
+            console.log(a + b);
+        })(5, 5);
+
+
+Objects:
+
+    --> It stores the data in form of key-value pairs.
+    --> Can access the values by using keys.
+
+    const data = {
+        firstName: 'John',
+        lastName: 'Smilga',
+        isMarried: true;
+        skills: ['HTML','CSS','JS','java','python'],
+        getFullName: function() {
+            return `${this.firstName} ${this.lastName}`;
+        }
+    }
+
+    Object Methods:
+
+        1.Object.assign({}, data);
+        2.Object.keys(data);
+        3.Object.values(data);
+        4.Object.entries(data);
+        5.data.hasOwnProperty('firstName');
+
+
+Destructuring: 
+
+    --> unpacking arrays and objects to distinct variables.
+
+            const details = ['Alex', 21, 'Male'];
+
+            let [name, age, gender] = details;
+            let [name, , gender] = details;
+
+
+Spread Operator: 
+
+    --> When we destructure an array we use the spread operator to get the rest elements as array.
+
+    const nums = [1,2,3,4,5,6,7,8];
+    let [num1, num2, ...rest] = nums;
+
+    const numbers1 = [1,2,3];
+    const numbers2 = [4,5,6];
+    const numbers3 = [...numbers1, ...numbers2];
+
+    o/p: [1,2,3,4,5,6]
+
+Rest Operator:
+
+    --> Rest operator is used to copy the elements of one array to another array.
+    --> It can be used in objects as well.
+
+    const arr1 = [1,2,3,4];
+    const arr2 = [...arr1];
+
+    --> Here both arr1 and arr2 will points to different addresses.
+
+    const data = {
+        name: 'Alex',
+        age: 21
+    }
+
+    const dummyData = {...data, age: 20}
+
+    --> Can modify the data in the object while copying the data from one object to another object.
+
+Error Handling:
+
+    try {
+        const a = 2;
+        a = 1;
+    }
+    catch(e) {
+        console.warn('We are in catch block');
+        console.log(e.message);
+    }
+
+    Different Types of Errors:
+
+        1.Reference Error: It is thrown if we use a variable that has not been declared.
+
+        let firstName = 'Abhi';
+        let fullName = firstName + ' ' + lastName;
+        console.log(fullName);
+
+        2.Type Error: If an operand or argument passed to a function is incompatible with the type expected by that operator or function.
+
+        let num = 10
+        console.log(num.toLowerCase());
+
+        3.Syntax Error: Invalid code which cannot be interpreted by the compiler.
+
+        let square = 2 x 2;
+        console.log(square);
+
+JSON(JavaScript Object Notation): 
+
+    1.JSON.parse(json);     --> Converting JSON to Object.
+    2.JSON.stringify(object); --> Converting Object to JSON.
+
+Local Storage:
+
+    1.localStorage - to display the localStorage object
+    2.localStorage.clear() - to remove everything in the local storage
+    3.localStorage.setItem() - to store data in the localStorage. It takes a key and a value parameters.
+    4.localStorage.getItem() - to display data stored in the localStorage. It takes a key as a parameter.
+    5.localStorage.removeItem() - to remove stored item form a localStorage. It takes key as a parameter.
+    6.localStorage.key() - to display a data stored in a localStorage. It takes index as a parameter.
+
+Higher Order Functions, Callbacks:
+
+    --> Higher order functions are functions which take other function as a parameter or return a function as a value. 
+    --> The function passed as a parameter is called callback.
+
+    setTimeout(() => {
+        console.log('This is a callback function')
+    }, 2000);
+
+    setInterval(() => {
+        console.log('This will be printed for every 2000ms');
+    }, 2000);
+
+forEach, map, filter, reduce:
+
+    let numbers = [1,2,3,4,5]
+
+    forEach: 
+        --> Iterate an array elements. 
+        --> We use forEach only with arrays. 
+        --> It takes a callback function with elements, index and array as parameters. 
+        --> The index and the array optional.
+
+        numbers.forEach(num => console.log(num));
+
+    map:
+        --> Iterate an array elements and modify the array elements. 
+        --> It takes a callback function with elements, index , array as parameters and returns a new array.
+
+        let squares = numbers.map(num => num*num);
+        console.log(squares);
+
+    filter:
+
+        --> Filter out items which fulfill filtering condition and return a new array.
+
+        let evenNumbers = numbers.filter(num => num%2 === 0);
+        console.log(evenNumbers);
+
+    reduce:
+
+        --> Reduce takes a callback function. 
+        --> The call back function takes accumulator, current, and optional initial value as a parameter and returns a single value. 
+        --> If we do not specify this parameter, by default accumulator will get array first value. 
+
+        let sumOfNumbers = numbers.reduce((acc, curr) => acc + curr, 0);
+        console.log(sumOfNumbers);
+
+    find:
+
+        --> Return the first element which satisfies the condition.
+
+        let firstEvenNumber = numbers.find(num => num%2 === 0);
+        console.log(firstEvenNumber);
+
+Closures:
+
+    --> JavaScript allows writing function inside an outer function. 
+    --> We can write as many inner functions as we want. 
+    --> If inner function access the variables of outer function then it is called closure.
+    --> A function along with it's lexical scope bundles together to form a closure.
+
+    function outerFunction() {
+        let count = 0;
+        function innerFunction() {
+            count++;
+            return count;
+        }
+
+        return innerFunction;
+    }
+    const innerFunc = outerFunction();
+
+    console.log(innerFunc());       //1
+    console.log(innerFunc());       //2
+    console.log(innerFunc());       //3
+
+Promises:
+
+    --> A Promise is a way to handle asynchronous operations in JavaScript. 
+    --> The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+    --> A Promise is in one of these states: pending, fullfilled, rejected.
+
+    const promise = new Promise((resolve, reject) => {
+        resolve('success');
+        reject('failure');
+    });
+
+    Eg: const url = 'https://restcountries.com/v2/all';
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => console.error(error));
+
+    --> Multiple 'then' methods can be attached to a promise.
+    --> If a 'then' method is asynchronous then the next 'then' method will gets executed without waiting for the previous 'then' method.
+
+Async and Await:
+
+    --> Async and await is an easier way to handle promises. 
+    --> It is easy to understand and it clean to write.
+    --> The word async in front of a function means that function will return a promise.
+    --> await keyword can be used only within the async function.
+
+        const fetchData = async () => {
+            try {
+                const response = await fetch(url);
+                const countries = await response.json();
+                console.log(countries);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+DOM Manipulation:
+
+    document.getElementsByTagName('tagname');
+    document.getElementsByClassName('classname');
+    document.getElementById('id');
+
+    let firstTitle = document.querySelector('h1');           // select the first available h1 element
+    let firstTitle = document.querySelector('#first-title'); // select id with first-title
+    let firstTitle = document.querySelector('.title') ;      // select the first available element with class title
+
+    const titles = document.querySelectorAll('h1');
+    titles[3].className = 'title';
+    titles[3].id = 'fourth-title';
+
+    const titles = document.querySelectorAll('h1');
+    titles[3].setAttribute('class', 'title');
+    titles[3].setAttribute('id', 'fourth-title');
+
+    //another way to setting an attribute: append the class, doesn't over ride
+    
+    titles[3].classList.add('title', 'header-title');
+    titles[3].classList.remove('title', 'header-title');
+    titles[3].textContent = 'Fourth Title';
+
+    const titles = document.querySelectorAll('h1');
+
+    titles.forEach((title, i) => {
+        title.style.fontSize = '24px'
+            if (i % 2 === 0) {
+                title.style.backgroundColor = 'green';
+            } else {
+                title.style.backgroundColor = 'red';
+            }
+        })
+
+    const child = document.createElement('tagname');
+    document.body.appendChild(child);
+
+    const ul = document.querySelector('ul');
+    
+    const lists = document.querySelectorAll('li');
+    for (const list of lists) {
+        ul.removeChild(list);
+    }
+
+Class:
+
+    --> Class is a blue print for creating objects.
+    --> It defines what are the properties and methods they have.
+    --> use constructor for unique properties.
+
+    class Player {
+        let score = 0;
+        pause() {
+            console.log('You paused the game');
+        }
+        exit() {
+            console.log('You exited from the game');
+        }
+    }
+
+this:
+
+    --> this keyword refers to a particular object.
+    
+
+constructor: 
+
+    --> A special method that accepts the parameters and assigns properties.
+
+    class Employee {
+        constrctor(name, employeeId) {
+            this.name = name;
+            this. employeeId = employeeId;
+        }
+        working() {
+            console.log(`${this.name} is working in HCL`);
+        }
+    }
+
+static: 
+
+    --> It belongs to the class not to the object.
+    
+    class Employee {
+        constructor(name, employeeId) {
+            this.name = name;
+            this.employeeId = employeeId;
+            Employee.numberOfEmployees += 1;
+        }
+        static numberOfEmployees = 0;
+
+    }
+
+    const emp1 = new Emp('Ragnar', 'E1');
+    const emp2 = new Emp('Surya', 'E2');
+    console.log(Employee.numberOfEmployees);
+
+Inheritance: 
+
+    --> A child class can inherit all the properties and methods of parent class.
+    --> 'extends' keyword is used for inheritance.
+    --> 'super' keyword is used to call the constructor of the parent class.
+
+getters and setters:
+
+    --> binds an object property to a function.
+
+    class Demo {
+
+        value = 100;
+        constuctor(data) {
+            this.data = data;
+        }
+        get value() {
+            return this.value;
+        }
+        set value(value) {
+            this.value = value;
+        }
+    }
